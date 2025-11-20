@@ -1,1 +1,58 @@
-<h1>Hidden Wave Homepage</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hidden Wave</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      overflow: hidden;
+    }
+
+    .hero {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1.8s ease-in-out;
+    }
+
+    .hero img.active {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hero">
+    <img src="assets/images/hero-a-desktop.jpg" class="active" id="imgA" />
+    <img src="assets/images/hero-c-desktop.jpg" id="imgC" />
+    <img src="assets/images/hero-d-desktop.jpg" id="imgD" />
+  </div>
+
+  <script>
+    const images = ["imgA", "imgC", "imgD"];
+    let index = 0;
+
+    setInterval(() => {
+      document.getElementById(images[index]).classList.remove("active");
+      index = (index + 1) % images.length;
+      document.getElementById(images[index]).classList.add("active");
+    }, 5000);
+  </script>
+</body>
+</html>
