@@ -5,19 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hidden Wave — About</title>
   <style>
-    /* ====== Base ====== */
     * {
       box-sizing: border-box;
     }
 
-    body {
+    html, body {
       margin: 0;
       padding: 0;
-      background: #050609;
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      background: #020508;
       color: #f5f5f5;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Helvetica Neue", Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
+      font-family: "Futura", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
     }
 
     a {
@@ -25,214 +29,158 @@
       text-decoration: none;
     }
 
-    /* ====== Header / Nav（与首页统一风格） ====== */
-    .site-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 20;
-      padding: 22px 40px 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: linear-gradient(to bottom, rgba(5, 6, 9, 0.96), rgba(5, 6, 9, 0.75), transparent);
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      font-size: 11px;
+    .page {
+      min-height: 100vh;
+      position: relative;
+      padding: 0 24px 48px;
     }
 
-    .logo a {
-      display: inline-block;
-      line-height: 1.3;
-      font-weight: 500;
-      opacity: 0.95;
+    /* Header / Nav  —— 与首页保持一致风格 */
+    .site-header {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      right: 24px;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      pointer-events: none;
+    }
+
+    .site-header-inner {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: flex-start;
+      pointer-events: auto;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      font-size: 12px;
+      line-height: 1.1;
+    }
+
+    .logo-line {
+      opacity: 0.9;
     }
 
     .main-nav {
       display: flex;
-      gap: 34px;
-      font-size: 11px;
+      gap: 32px;
+      font-size: 12px;
+      align-items: flex-start;
     }
 
     .main-nav a {
-      position: relative;
-      opacity: 0.75;
-      transition: opacity 0.2s ease, transform 0.2s ease;
+      opacity: 0.82;
+      transition: opacity 0.25s ease;
       white-space: nowrap;
-    }
-
-    .main-nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 0;
-      height: 1px;
-      background: #f5f5f5;
-      opacity: 0.9;
-      transition: width 0.22s ease;
     }
 
     .main-nav a:hover {
       opacity: 1;
-      transform: translateY(-1px);
     }
 
-    .main-nav a:hover::after {
-      width: 100%;
+    .nav-contact--desktop {
+      display: inline-block;
     }
 
-    .main-nav a.active {
+    .nav-contact--mobile {
+      position: fixed;
+      left: 24px;
+      bottom: 32px;
+      z-index: 10;
+      font-size: 12px;
+      opacity: 0.86;
+      transition: opacity 0.25s ease;
+      display: none;
+    }
+
+    .nav-contact--mobile:hover {
       opacity: 1;
     }
 
-    .main-nav a.active::after {
-      width: 100%;
-    }
-
-    /* ====== Layout ====== */
-    .page-wrap {
-      min-height: 100vh;
-      padding: 120px 0 80px; /* 留出 header 高度 */
-    }
-
-    .about-inner {
-      max-width: 980px;
+    /* 页面内容区域 */
+    .page-inner {
+      max-width: 960px;
       margin: 0 auto;
-      padding: 0 40px 80px;
+      padding-top: 140px;
     }
 
-    /* ====== Typography ====== */
-    .eyebrow {
-      font-size: 12px;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      opacity: 0.72;
-      margin-bottom: 22px;
+    .page-kicker {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      opacity: 0.6;
+      margin-bottom: 16px;
     }
 
-    .title-main {
-      font-size: 46px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      margin: 0 0 16px;
-      font-weight: 600;
+    .page-title {
+      font-size: 32px;
+      letter-spacing: 0.14em;
+      margin: 0 0 24px;
     }
 
-    .title-sub {
+    .page-subtitle {
+      font-size: 13px;
+      opacity: 0.7;
+      margin-bottom: 32px;
+    }
+
+    .page-body {
+      text-transform: none;
+      letter-spacing: 0.04em;
       font-size: 14px;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      opacity: 0.78;
-      margin-bottom: 46px;
-    }
-
-    .intro-text {
-      max-width: 720px;
-      font-size: 16px;
       line-height: 1.7;
       opacity: 0.9;
-      margin-bottom: 56px;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-      gap: 56px;
-      align-items: flex-start;
+    .page-body p {
+      margin: 0 0 18px;
     }
 
-    .block-label {
-      font-size: 11px;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      opacity: 0.7;
-      margin-bottom: 10px;
-    }
-
-    .block-title {
-      font-size: 15px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-      opacity: 0.9;
-    }
-
-    .block-text {
-      font-size: 14px;
-      line-height: 1.8;
-      opacity: 0.86;
-    }
-
-    .meta {
-      font-size: 12px;
-      line-height: 1.8;
-      opacity: 0.7;
-      margin-top: 40px;
-    }
-
-    /* ====== Subtle divider ====== */
-    .divider {
-      height: 1px;
-      width: 80px;
-      background: linear-gradient(to right, rgba(245,245,245,0.7), transparent);
-      margin: 32px 0 40px;
-    }
-
-    /* ====== Responsive ====== */
-    @media (max-width: 900px) {
-      .about-inner {
-        padding: 0 24px 64px;
+    @media (max-width: 767px) {
+      .page {
+        padding: 0 20px 40px;
       }
 
-      .title-main {
-        font-size: 34px;
-        letter-spacing: 0.14em;
-      }
-
-      .title-sub {
-        font-size: 12px;
-        letter-spacing: 0.24em;
-        margin-bottom: 32px;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-    }
-
-    @media (max-width: 640px) {
       .site-header {
-        padding: 18px 18px 14px;
-        font-size: 10px;
-        letter-spacing: 0.26em;
+        top: 20px;
+        left: 20px;
+        right: 20px;
+      }
+
+      .logo {
+        font-size: 11px;
       }
 
       .main-nav {
-        gap: 18px;
-        font-size: 10px;
+        gap: 20px;
+        font-size: 11px;
+        flex-wrap: wrap;
       }
 
-      .about-inner {
-        padding: 0 18px 56px;
+      .page-inner {
+        padding-top: 120px;
       }
 
-      .page-wrap {
-        padding-top: 104px;
+      .page-title {
+        font-size: 24px;
+        line-height: 1.2;
       }
 
-      .title-main {
-        font-size: 26px;
-        letter-spacing: 0.16em;
+      .nav-contact--desktop {
+        display: none;
       }
 
-      .intro-text {
-        font-size: 14px;
+      .nav-contact--mobile {
+        display: inline-block;
       }
     }
-    </style>
+  </style>
 </head>
 <body>
   <div class="page">
@@ -253,59 +201,38 @@
       </div>
     </header>
 
-  <!-- ===== Page Content ===== -->
-  <main class="page-wrap">
-    <section class="about-inner">
-      <div class="eyebrow">About</div>
-      <h1 class="title-main">Strategic Systems for Creative Growth</h1>
-      <div class="title-sub">
-        A THINK TANK OPERATING ACROSS PRODUCTION, DISTRIBUTION & PARTNERSHIPS
+    <!-- Content -->
+    <main class="page-inner">
+      <div class="page-kicker">About</div>
+      <h1 class="page-title">Strategic Systems for Creative Growth</h1>
+
+      <div class="page-subtitle">
+        A think tank operating across creative, commercial and cultural systems.
       </div>
 
-      <p class="intro-text">
-        Hidden Wave operates as a dynamic think tank for brands navigating the
-        intersections of creative production, commercial distribution, and
-        strategic partnerships. We design systems that connect artistic intention
-        with market realities, building structures that are precise, flexible,
-        and sustainable over time.
-      </p>
-
-      <div class="divider"></div>
-
-      <div class="grid">
-        <div>
-          <div class="block-label">Approach</div>
-          <div class="block-title">From intuition to infrastructure</div>
-          <p class="block-text">
-            Our work begins with understanding how a brand thinks, behaves, and
-            aspires to grow. From there, we translate creative DNA into clear
-            frameworks: mapping B2B channels, aligning partners, structuring
-            commercial calendars, and defining how each move feeds into the
-            next. The goal is not to amplify noise, but to design a system that
-            lets the right opportunities surface naturally.
-          </p>
-        </div>
-
-        <div>
-          <div class="block-label">Scope</div>
-          <div class="block-title">Global, but deliberately selective</div>
-          <p class="block-text">
-            Operating across Milan, Shanghai, and key international markets,
-            Hidden Wave collaborates with brands, distributors, showrooms, and
-            cultural partners on a project or long-term basis. Each engagement
-            is tailored: from wholesale structure and regional strategy to
-            creative collaborations and special-format activations.
-          </p>
-
-          <p class="meta">
-            Hidden Wave is intentionally small in scale and high in involvement.
-            We partner with a limited number of clients at any given time to
-            preserve clarity, responsiveness, and a hands-on relationship with
-            every project that carries the studio’s name.
-          </p>
-        </div>
+      <div class="page-body">
+        <p>
+          Hidden Wave operates as a dynamic think tank that connects strategic clarity
+          with creative and commercial intelligence. We work across brands, markets
+          and cultural systems to design structures that are relevant, adaptive and
+          future-focused.
+        </p>
+        <p>
+          At the core is a collaborative network of specialists who contribute to
+          analysis, strategy and execution. By combining human insight with
+          AI-assisted methodologies, we create frameworks that help brands see
+          further, act faster and operate with precision.
+        </p>
+        <p>
+          Our role is not to decorate decisions, but to reveal truth, options and
+          opportunity — exits and entries — so partners can move forward with
+          confidence and direction.
+        </p>
       </div>
-    </section>
-  </main>
+    </main>
+
+    <!-- Mobile bottom CONTACT -->
+    <a href="contact.html" class="nav-contact--mobile">Contact</a>
+  </div>
 </body>
 </html>
