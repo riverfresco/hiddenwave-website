@@ -6,80 +6,58 @@
   <title>Hidden Wave</title>
 
   <style>
-    /* ---------- Base ---------- */
     body {
       margin: 0;
       padding: 0;
-      background: #02040a;
-      color: #f5f5f5;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        system-ui, sans-serif;
-      overflow-x: hidden;
+      background: black;
+      overflow: hidden;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+      header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #f5f5f5;
+    mix-blend-mode: difference; /* 让字在深浅图上都看得清 */
+  }
+
+  .nav-left {
+    font-weight: 500;
+  }
+
+  .nav-right a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.85;
+  }
+
+  .nav-right a:hover {
+    opacity: 1;
+  }
+
+  @media (max-width: 767px) {
+    header {
+      padding: 14px 18px;
+      font-size: 11px;
+      letter-spacing: 0.14em;
     }
 
-    /* ---------- Header & Navigation ---------- */
-
-    .site-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 20;
-      padding: 18px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      mix-blend-mode: screen;
-      pointer-events: none; /* text still clickable via children */
+    .nav-right a {
+      margin-left: 12px;
     }
-
-    .site-header-inner {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      pointer-events: auto;
-    }
-
-    .logo {
-      font-size: 14px;
-      letter-spacing: 0.2em;
-      line-height: 1.2;
-    }
-
-    .main-nav {
-      display: flex;
-      gap: 32px;
-      font-size: 13px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-    }
-
-    .main-nav a {
-      opacity: 0.9;
-      transition: opacity 0.2s ease;
-      white-space: nowrap;
-    }
-
-    .main-nav a:hover {
-      opacity: 1;
-    }
-
-    /* This is the CONTACT in the top nav (desktop only on mobile) */
-    .nav-contact {
-      display: inline-block;
-    }
-
-    /* ---------- Hero ---------- */
-
-    .hero {
+  }
+.hero {
       position: relative;
       width: 100vw;
       height: 100vh;
@@ -101,47 +79,9 @@
       opacity: 1;
     }
 
-    /* Contact at the bottom for mobile */
-    .mobile-contact {
-      position: absolute;
-      bottom: 28px;
-      left: 20px; /* aligned with header padding / ABOUT left edge */
-      font-size: 13px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      opacity: 0.9;
-      display: none; /* default hidden on desktop, shown in mobile */
-    }
-
-    /* ---------- Sections below hero ---------- */
-
-    main {
-      background: #02040a;
-    }
-
-    section {
-      padding: 80px 20px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    section h2 {
-      font-size: 16px;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-    }
-
-    section p {
-      font-size: 14px;
-      line-height: 1.7;
-      max-width: 640px;
-    }
-
-    /* ---------- Desktop / Mobile visibility for hero images ---------- */
-
+    /* Desktop / Mobile visibility */
     .desktop-only { display: none; }
-    .mobile-only  { display: none; }
+    .mobile-only { display: none; }
 
     @media (min-width: 768px) {
       .desktop-only { display: block; }
@@ -150,127 +90,45 @@
     @media (max-width: 767px) {
       .mobile-only { display: block; }
     }
-
-    /* ---------- Responsive tweaks ---------- */
-
-    @media (max-width: 767px) {
-      .site-header {
-        padding: 14px 16px;
-      }
-
-      .site-header-inner {
-        align-items: flex-start;
-      }
-
-      .logo {
-        font-size: 12px;
-      }
-
-      .main-nav {
-        gap: 18px;
-        font-size: 11px;
-      }
-
-      /* On mobile we hide CONTACT in the top nav
-         and use the bottom version instead */
-      .nav-contact {
-        display: none;
-      }
-
-      .mobile-contact {
-        display: block;
-      }
-
-      section {
-        padding: 64px 16px;
-      }
-    }
   </style>
 </head>
 
 <body>
-  <!-- Header -->
-  <header class="site-header">
-    <div class="site-header-inner">
-      <div class="logo">
-        HIDDEN<br />WAVE
-      </div>
-      <nav class="main-nav">
-        <a href="about.html">ABOUT</a>
-        <a href="services.html">SERVICES</a>
-        <a href="portfolio.html">PORTFOLIO</a>
-        <a href="contact.html" class="nav-contact">CONTACT</a>
-      </nav>
-    </div>
+  <header>
+    <div class="nav-left">HIDDEN WAVE</div>
+    <nav class="nav-right">
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </header>
 
-  <!-- Hero with background images -->
   <div class="hero">
-    <!-- Desktop: A + C -->
-    <img src="assets/images/hero-a-desktop.jpg"
-         class="desktop-only active" id="deskA" alt="Hidden Wave hero A">
-    <img src="assets/images/hero-c-desktop.jpg"
-         class="desktop-only" id="deskC" alt="Hidden Wave hero C">
 
-    <!-- Mobile: A + D -->
-    <img src="assets/images/hero-a-mobile.jpg"
-         class="mobile-only active" id="mobA" alt="Hidden Wave hero A mobile">
-    <img src="assets/images/hero-d-mobile.jpg"
-         class="mobile-only" id="mobD" alt="Hidden Wave hero D mobile">
+    <!-- Desktop (A + C only) -->
+    <img src="assets/images/hero-a-desktop.jpg" class="desktop-only active" id="deskA">
+    <img src="assets/images/hero-c-desktop.jpg" class="desktop-only" id="deskC">
 
-    <!-- Mobile contact at bottom, aligned under ABOUT -->
-    <a href="contact.html" class="mobile-contact">CONTACT</a>
+    <!-- Mobile (A + D only now) -->
+    <img src="assets/images/hero-a-mobile.jpg" class="mobile-only active" id="mobA">
+    <img src="assets/images/hero-d-mobile.jpg" class="mobile-only" id="mobD">
+
   </div>
 
-  <!-- Simple content sections (you can edit text later) -->
-  <main>
-    <section id="about">
-      <h2>ABOUT</h2>
-      <p>
-        Hidden Wave is a consulting agency focused on strategic systems for
-        creative growth. We work across creative production, commercial
-        distribution, and brand partnerships, building bridges between
-        independent voices and global markets.
-      </p>
-    </section>
-
-    <section id="services">
-      <h2>SERVICES</h2>
-      <p>
-        From B2B expansion and franchise advisory to creative production and
-        long-term partnership development, we work as an extension of your team
-        to structure opportunities with precision and intention.
-      </p>
-    </section>
-
-    <section id="portfolio">
-      <h2>PORTFOLIO</h2>
-      <p>
-        A selection of collaborations and projects across APAC, EMEA, and the
-        US, spanning wholesale strategy, distributor partnerships, and creative
-        image-making for fashion, lifestyle, and cultural brands.
-      </p>
-    </section>
-  </main>
-
   <script>
-    // Hero slideshow logic
-    const desktopImages = ["deskA", "deskC"]; // A + C on desktop
-    const mobileImages  = ["mobA", "mobD"];   // A + D on mobile
+    const desktopImages = ["deskA", "deskC"];     // Desktop: A + C
+    const mobileImages = ["mobA", "mobD"];        // Mobile: A + D
 
-    const DISPLAY_TIME = 7000; // how long each image stays fully visible (ms)
+    const DISPLAY_TIME = 5000;
 
-    function startSlideshow(imageIds) {
+    function startSlideshow(images) {
       let index = 0;
 
       setInterval(() => {
-        const currentId = imageIds[index];
-        document.getElementById(currentId).classList.remove("active");
-
-        index = (index + 1) % imageIds.length;
-
-        const nextId = imageIds[index];
-        document.getElementById(nextId).classList.add("active");
+        document.getElementById(images[index]).classList.remove("active");
+        index = (index + 1) % images.length;
+        document.getElementById(images[index]).classList.add("active");
       }, DISPLAY_TIME);
     }
 
