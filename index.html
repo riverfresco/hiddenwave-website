@@ -28,7 +28,7 @@
       height: 100%;
       object-fit: cover;
       opacity: 0;
-      transition: opacity 1.8s ease-in-out;
+      transition: opacity 2.6s ease-in-out;
     }
 
     .hero img.active {
@@ -38,21 +38,52 @@
 </head>
 
 <body>
-  <div class="hero">
-    <img src="assets/images/hero-a-desktop.jpg" class="active" id="imgA" />
-    <img src="assets/images/hero-c-desktop.jpg" id="imgC" />
-    <img src="assets/images/hero-d-desktop.jpg" id="imgD" />
+  <div class="hero" id="heroDesktop">
+    <!-- Desktop only -->
+    <img src="assets/images/hero-a-desktop.jpg" class="active" id="dA">
+    <img src="assets/images/hero-c-desktop.jpg" id="dC">
+  </div>
+
+  <div class="hero" id="heroMobile" style="display:none;">
+    <!-- Mobile includes A + C + D -->
+    <img src="assets/images/hero-a-mobile.jpg" class="active" id="mA">
+    <img src="assets/images/hero-c-mobile.jpg" id="mC">
+    <img src="assets/images/hero-d-mobile.jpg" id="mD">
   </div>
 
   <script>
-    const images = ["imgA", "imgC", "imgD"];
-    let index = 0;
+    // Detect mobile
+    const isMobile = window.innerWidth < 768;
 
-    setInterval(() => {
-      document.getElementById(images[index]).classList.remove("active");
-      index = (index + 1) % images.length;
-      document.getElementById(images[index]).classList.add("active");
-    }, 5000);
+    const desktopHero = document.getElementById("heroDesktop");
+    const mobileHero = document.getElementById("heroMobile");
+
+    if (isMobile) {
+      desktopHero.style.display = "none";
+      mobileHero.style.display = "block";
+
+      const mobileImages = ["mA", "mC", "mD"];
+      let mi = 0;
+
+      setInterval(() => {
+        document.getElementById(mobileImages[mi]).classList.remove("active");
+        mi = (mi + 1) % mobileImages.length;
+        document.getElementById(mobileImages[mi]).classList.add("active");
+      }, 6000);
+
+    } else {
+      mobileHero.style.display = "none";
+      desktopHero.style.display = "block";
+
+      const desktopImages = ["dA", "dC"];
+      let di = 0;
+
+      setInterval(() => {
+        document.getElementById(desktopImages[di]).classList.remove("active");
+        di = (di + 1) % desktopImages.length;
+        document.getElementById(desktopImages[di]).classList.add("active");
+      }, 7000); // slower, more cinematic
+    }
   </script>
 </body>
 </html>
