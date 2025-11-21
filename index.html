@@ -4,99 +4,121 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hidden Wave</title>
-
   <style>
-    body {
+    /* ---------- Base ---------- */
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
       margin: 0;
       padding: 0;
-      background: black;
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      background: #020508;
+      color: #f5f5f5;
+      font-family: "Futura", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
       overflow: hidden;
     }
 
-      header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
-    padding: 18px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-    font-size: 13px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #f5f5f5;
-    mix-blend-mode: difference; /* 让字在深浅图上都看得清 */
-  }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-  .nav-left {
-    font-weight: 500;
-  }
-
-  .nav-right a {
-    margin-left: 20px;
-    text-decoration: none;
-    color: inherit;
-    opacity: 0.85;
-  }
-
-  .nav-right a:hover {
-    opacity: 1;
-  }
-
- @media (max-width: 768px) {
-  /* use mobile hero images on small screens */
-  .hero img.desktop {
-    display: none;
-  }
-
-  .hero img.mobile {
-    display: block;
-  }
-
-  /* mobile navigation layout */
-  nav {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-  }
-
-  .menu-toggle {
-    display: block;
-    color: #ffffff;
-    font-size: 28px;
-    cursor: pointer;
-    margin-bottom: 20px;
-  }
-
-  .menu {
-    display: none;
-    flex-direction: column;
-    gap: 18px;
-    margin-top: 12px;
-  }
-
-  .menu.active {
-    display: flex;
-  }
-
-  /* move CONTACT to the bottom on mobile, aligned with ABOUT */
-  .menu a:last-child {
-    position: absolute;
-    bottom: 40px;   /* 控制它离底部的距离，想更低/更高可以自己微调 */
-    left: 20px;     /* 和 nav 的 left 一致，这样首字母和 ABOUT 对齐 */
-  }
-}
-.hero {
+    .page {
       position: relative;
       width: 100vw;
       height: 100vh;
       overflow: hidden;
     }
 
-    .hero img {
+    /* ---------- Header / Nav ---------- */
+    .site-header {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      right: 24px;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      pointer-events: none; /* let hero receive scroll/drag, but we enable pointer on children */
+    }
+
+    .site-header-inner {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: flex-start;
+      pointer-events: auto;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      font-size: 12px;
+      line-height: 1.1;
+    }
+
+    .logo-line {
+      opacity: 0.9;
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 32px;
+      font-size: 12px;
+      align-items: flex-start;
+    }
+
+    .main-nav a {
+      opacity: 0.82;
+      transition: opacity 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .main-nav a:hover {
+      opacity: 1;
+    }
+
+    /* desktop-only CONTACT at top */
+    .nav-contact--desktop {
+      display: inline-block;
+    }
+
+    /* mobile-only CONTACT at bottom */
+    .nav-contact--mobile {
+      position: fixed;
+      left: 24px;
+      bottom: 32px;
+      z-index: 10;
+      font-size: 12px;
+      opacity: 0.86;
+      transition: opacity 0.25s ease;
+      display: none; /* hidden on desktop */
+    }
+
+    .nav-contact--mobile:hover {
+      opacity: 1;
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .hero-image {
       position: absolute;
       top: 0;
       left: 0;
@@ -104,71 +126,176 @@
       height: 100%;
       object-fit: cover;
       opacity: 0;
-      transition: opacity 2s ease-in-out;
+      transition: opacity 1.8s ease-in-out;
+      will-change: opacity;
     }
 
-    .hero img.active {
+    .hero-image.active {
       opacity: 1;
     }
 
-    /* Desktop / Mobile visibility */
-    .desktop-only { display: none; }
-    .mobile-only { display: none; }
+    /* ---------- Desktop / Mobile visibility ---------- */
 
+    /* Desktop >= 768px */
     @media (min-width: 768px) {
-      .desktop-only { display: block; }
+      .hero-image.desktop {
+        display: block;
+      }
+      .hero-image.mobile {
+        display: none;
+      }
+      .nav-contact--desktop {
+        display: inline-block;
+      }
+      .nav-contact--mobile {
+        display: none;
+      }
     }
 
+    /* Mobile <= 767px */
     @media (max-width: 767px) {
-      .mobile-only { display: block; }
+      .site-header {
+        top: 20px;
+        left: 20px;
+        right: 20px;
+      }
+
+      .logo {
+        font-size: 11px;
+      }
+
+      .main-nav {
+        gap: 20px;
+        font-size: 11px;
+      }
+
+      .hero-image.desktop {
+        display: none;
+      }
+      .hero-image.mobile {
+        display: block;
+      }
+
+      .nav-contact--desktop {
+        display: none;
+      }
+      .nav-contact--mobile {
+        display: inline-block;
+      }
     }
   </style>
 </head>
-
 <body>
-  <header>
-    <div class="nav-left">HIDDEN WAVE</div>
-    <nav class="nav-right">
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+  <div class="page">
+    <!-- Header -->
+    <header class="site-header">
+      <div class="site-header-inner">
+        <div class="logo">
+          <span class="logo-line">Hidden</span>
+          <span class="logo-line">Wave</span>
+        </div>
 
-  <div class="hero">
+        <nav class="main-nav">
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="contact.html" class="nav-contact--desktop">Contact</a>
+        </nav>
+      </div>
+    </header>
 
-    <!-- Desktop (A + C only) -->
-    <img src="assets/images/hero-a-desktop.jpg" class="desktop-only active" id="deskA">
-    <img src="assets/images/hero-c-desktop.jpg" class="desktop-only" id="deskC">
+    <!-- Hero images -->
+    <div class="hero">
+      <!-- Desktop sequence: A → C → A → C ... -->
+      <img
+        src="assets/images/hero-a-desktop.jpg"
+        alt="Hidden Wave — Hero A desktop"
+        class="hero-image desktop active"
+      />
+      <img
+        src="assets/images/hero-c-desktop.jpg"
+        alt="Hidden Wave — Hero C desktop"
+        class="hero-image desktop"
+      />
 
-    <!-- Mobile (A + D only now) -->
-    <img src="assets/images/hero-a-mobile.jpg" class="mobile-only active" id="mobA">
-    <img src="assets/images/hero-d-mobile.jpg" class="mobile-only" id="mobD">
+      <!-- Mobile sequence: A → D → A → D ... -->
+      <img
+        src="assets/images/hero-a-mobile.jpg"
+        alt="Hidden Wave — Hero A mobile"
+        class="hero-image mobile active"
+      />
+      <img
+        src="assets/images/hero-d-mobile.jpg"
+        alt="Hidden Wave — Hero D mobile"
+        class="hero-image mobile"
+      />
+    </div>
 
+    <!-- Mobile bottom CONTACT -->
+    <a href="contact.html" class="nav-contact--mobile">Contact</a>
   </div>
 
   <script>
-    const desktopImages = ["deskA", "deskC"];     // Desktop: A + C
-    const mobileImages = ["mobA", "mobD"];        // Mobile: A + D
+    // Hero fade rotation
+    const desktopImages = Array.from(
+      document.querySelectorAll(".hero-image.desktop")
+    );
+    const mobileImages = Array.from(
+      document.querySelectorAll(".hero-image.mobile")
+    );
 
-    const DISPLAY_TIME = 5000;
-
-    function startSlideshow(images) {
-      let index = 0;
-
-      setInterval(() => {
-        document.getElementById(images[index]).classList.remove("active");
-        index = (index + 1) % images.length;
-        document.getElementById(images[index]).classList.add("active");
-      }, DISPLAY_TIME);
+    function isDesktop() {
+      return window.matchMedia("(min-width: 768px)").matches;
     }
 
-    if (window.innerWidth >= 768) {
-      startSlideshow(desktopImages);
-    } else {
-      startSlideshow(mobileImages);
+    function getCurrentSet() {
+      return isDesktop() ? desktopImages : mobileImages;
     }
+
+    let currentSet = getCurrentSet();
+    let currentIndex = 0;
+
+    // Ensure a clean initial state
+    function resetActiveImages() {
+      desktopImages.forEach((img) => img.classList.remove("active"));
+      mobileImages.forEach((img) => img.classList.remove("active"));
+
+      currentSet = getCurrentSet();
+      currentIndex = 0;
+
+      if (currentSet.length > 0) {
+        currentSet[0].classList.add("active");
+      }
+    }
+
+    resetActiveImages();
+
+    function cycleHero() {
+      const imgs = getCurrentSet();
+      if (!imgs || imgs.length === 0) return;
+
+      // If the set changed (e.g., rotation / resize), reset
+      if (imgs !== currentSet) {
+        resetActiveImages();
+        return;
+      }
+
+      imgs[currentIndex].classList.remove("active");
+      currentIndex = (currentIndex + 1) % imgs.length;
+      imgs[currentIndex].classList.add("active");
+    }
+
+    // 7s fully visible + 1.8s fade ≈ 9s cycle time
+    const HERO_INTERVAL = 9000;
+    setInterval(cycleHero, HERO_INTERVAL);
+
+    // Handle orientation / resize changes
+    window.addEventListener("resize", () => {
+      const newSet = getCurrentSet();
+      if (newSet !== currentSet) {
+        resetActiveImages();
+      }
+    });
   </script>
 </body>
 </html>
