@@ -28,61 +28,71 @@
       height: 100%;
       object-fit: cover;
       opacity: 0;
-      transition: opacity 2.6s ease-in-out;
+      transition: opacity 2s ease-in-out;
     }
 
     .hero img.active {
       opacity: 1;
     }
+
+    /* Desktop only */
+    .desktop-only {
+      display: none;
+    }
+
+    .mobile-only {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .desktop-only {
+        display: block;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .mobile-only {
+        display: block;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <div class="hero" id="heroDesktop">
-    <!-- Desktop only -->
-    <img src="assets/images/hero-a-desktop.jpg" class="active" id="dA">
-    <img src="assets/images/hero-c-desktop.jpg" id="dC">
-  </div>
+  <div class="hero">
 
-  <div class="hero" id="heroMobile" style="display:none;">
-    <!-- Mobile includes A + C + D -->
-    <img src="assets/images/hero-a-mobile.jpg" class="active" id="mA">
-    <img src="assets/images/hero-c-mobile.jpg" id="mC">
-    <img src="assets/images/hero-d-mobile.jpg" id="mD">
+    <!-- Desktop (A + C only) -->
+    <img src="assets/images/hero-a-desktop.jpg" class="desktop-only active" id="deskA" />
+    <img src="assets/images/hero-c-desktop.jpg" class="desktop-only" id="deskC" />
+
+    <!-- Mobile (A + C + D) -->
+    <img src="assets/images/hero-a-mobile.jpg" class="mobile-only active" id="mobA" />
+    <img src="assets/images/hero-c-mobile.jpg" class="mobile-only" id="mobC" />
+    <img src="assets/images/hero-d-mobile.jpg" class="mobile-only" id="mobD" />
+
   </div>
 
   <script>
-    // Detect mobile
-    const isMobile = window.innerWidth < 768;
+    const desktopImages = ["deskA", "deskC"];
+    const mobileImages = ["mobA", "mobC", "mobD"];
 
-    const desktopHero = document.getElementById("heroDesktop");
-    const mobileHero = document.getElementById("heroMobile");
+    const DISPLAY_TIME = 5000; // Each image stays 5s
 
-    if (isMobile) {
-      desktopHero.style.display = "none";
-      mobileHero.style.display = "block";
-
-      const mobileImages = ["mA", "mC", "mD"];
-      let mi = 0;
+    function startSlideshow(images) {
+      let index = 0;
 
       setInterval(() => {
-        document.getElementById(mobileImages[mi]).classList.remove("active");
-        mi = (mi + 1) % mobileImages.length;
-        document.getElementById(mobileImages[mi]).classList.add("active");
-      }, 6000);
+        document.getElementById(images[index]).classList.remove("active");
+        index = (index + 1) % images.length;
+        document.getElementById(images[index]).classList.add("active");
+      }, DISPLAY_TIME);
+    }
 
+    // Detect device width
+    if (window.innerWidth >= 768) {
+      startSlideshow(desktopImages);
     } else {
-      mobileHero.style.display = "none";
-      desktopHero.style.display = "block";
-
-      const desktopImages = ["dA", "dC"];
-      let di = 0;
-
-      setInterval(() => {
-        document.getElementById(desktopImages[di]).classList.remove("active");
-        di = (di + 1) % desktopImages.length;
-        document.getElementById(desktopImages[di]).classList.add("active");
-      }, 7000); // slower, more cinematic
+      startSlideshow(mobileImages);
     }
   </script>
 </body>
