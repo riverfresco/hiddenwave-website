@@ -35,25 +35,16 @@
       opacity: 1;
     }
 
-    /* Desktop only */
-    .desktop-only {
-      display: none;
-    }
-
-    .mobile-only {
-      display: none;
-    }
+    /* Desktop / Mobile visibility */
+    .desktop-only { display: none; }
+    .mobile-only { display: none; }
 
     @media (min-width: 768px) {
-      .desktop-only {
-        display: block;
-      }
+      .desktop-only { display: block; }
     }
 
     @media (max-width: 767px) {
-      .mobile-only {
-        display: block;
-      }
+      .mobile-only { display: block; }
     }
   </style>
 </head>
@@ -62,21 +53,20 @@
   <div class="hero">
 
     <!-- Desktop (A + C only) -->
-    <img src="assets/images/hero-a-desktop.jpg" class="desktop-only active" id="deskA" />
-    <img src="assets/images/hero-c-desktop.jpg" class="desktop-only" id="deskC" />
+    <img src="assets/images/hero-a-desktop.jpg" class="desktop-only active" id="deskA">
+    <img src="assets/images/hero-c-desktop.jpg" class="desktop-only" id="deskC">
 
-    <!-- Mobile (A + C + D) -->
-    <img src="assets/images/hero-a-mobile.jpg" class="mobile-only active" id="mobA" />
-    <img src="assets/images/hero-c-mobile.jpg" class="mobile-only" id="mobC" />
-    <img src="assets/images/hero-d-mobile.jpg" class="mobile-only" id="mobD" />
+    <!-- Mobile (A + D only now) -->
+    <img src="assets/images/hero-a-mobile.jpg" class="mobile-only active" id="mobA">
+    <img src="assets/images/hero-d-mobile.jpg" class="mobile-only" id="mobD">
 
   </div>
 
   <script>
-    const desktopImages = ["deskA", "deskC"];
-    const mobileImages = ["mobA", "mobC", "mobD"];
+    const desktopImages = ["deskA", "deskC"];     // Desktop: A + C
+    const mobileImages = ["mobA", "mobD"];        // Mobile: A + D (updated)
 
-    const DISPLAY_TIME = 5000; // Each image stays 5s
+    const DISPLAY_TIME = 5000;
 
     function startSlideshow(images) {
       let index = 0;
@@ -88,7 +78,6 @@
       }, DISPLAY_TIME);
     }
 
-    // Detect device width
     if (window.innerWidth >= 768) {
       startSlideshow(desktopImages);
     } else {
