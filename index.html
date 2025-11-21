@@ -87,9 +87,42 @@
       .desktop-only { display: block; }
     }
 
-    @media (max-width: 767px) {
-      .mobile-only { display: block; }
-    }
+    @media (max-width: 768px) {
+
+  nav {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+
+  .menu-toggle {
+    display: block;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 20px;
+  }
+
+  .menu.active {
+    display: flex;
+  }
+
+  /* 调整 CONTACT 到页面底部 */
+  .menu a:last-child {
+    position: absolute;
+    bottom: 40px;     /* 你可以改成 20~60 之间，控制下移距离 */
+    left: 20px;       /* 和 ABOUT 的首字母对齐 */
+    font-size: 20px;
+  }
+
+}
   </style>
 </head>
 
