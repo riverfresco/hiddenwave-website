@@ -13,7 +13,51 @@
       overflow: hidden;
     }
 
-    .hero {
+      header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #f5f5f5;
+    mix-blend-mode: difference; /* 让字在深浅图上都看得清 */
+  }
+
+  .nav-left {
+    font-weight: 500;
+  }
+
+  .nav-right a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.85;
+  }
+
+  .nav-right a:hover {
+    opacity: 1;
+  }
+
+  @media (max-width: 767px) {
+    header {
+      padding: 14px 18px;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+    }
+
+    .nav-right a {
+      margin-left: 12px;
+    }
+  }
+.hero {
       position: relative;
       width: 100vw;
       height: 100vh;
@@ -50,6 +94,16 @@
 </head>
 
 <body>
+  <header>
+    <div class="nav-left">HIDDEN WAVE</div>
+    <nav class="nav-right">
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
   <div class="hero">
 
     <!-- Desktop (A + C only) -->
@@ -64,7 +118,7 @@
 
   <script>
     const desktopImages = ["deskA", "deskC"];     // Desktop: A + C
-    const mobileImages = ["mobA", "mobD"];        // Mobile: A + D (updated)
+    const mobileImages = ["mobA", "mobD"];        // Mobile: A + D
 
     const DISPLAY_TIME = 5000;
 
@@ -85,4 +139,5 @@
     }
   </script>
 </body>
+
 </html>
