@@ -1,1 +1,275 @@
-<h1>Services</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hidden Wave — Services</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      background: #020508;
+      color: #f5f5f5;
+      font-family: "Futura", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      position: relative;
+      padding: 0 24px 56px;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      right: 24px;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      pointer-events: none;
+    }
+
+    .site-header-inner {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: flex-start;
+      pointer-events: auto;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      font-size: 12px;
+      line-height: 1.1;
+    }
+
+    .logo-line {
+      opacity: 0.9;
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 32px;
+      font-size: 12px;
+      align-items: flex-start;
+    }
+
+    .main-nav a {
+      opacity: 0.82;
+      transition: opacity 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .main-nav a:hover {
+      opacity: 1;
+    }
+
+    .nav-contact--desktop {
+      display: inline-block;
+    }
+
+    .nav-contact--mobile {
+      position: fixed;
+      left: 24px;
+      bottom: 32px;
+      z-index: 10;
+      font-size: 12px;
+      opacity: 0.86;
+      transition: opacity 0.25s ease;
+      display: none;
+    }
+
+    .nav-contact--mobile:hover {
+      opacity: 1;
+    }
+
+    .page-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding-top: 140px;
+    }
+
+    .page-kicker {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      opacity: 0.6;
+      margin-bottom: 16px;
+    }
+
+    .page-title {
+      font-size: 30px;
+      letter-spacing: 0.14em;
+      margin: 0 0 32px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr;
+      gap: 40px 72px;
+      text-transform: none;
+      letter-spacing: 0.04em;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .service-block {
+      opacity: 0.9;
+    }
+
+    .service-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      opacity: 0.6;
+      margin-bottom: 8px;
+    }
+
+    .service-title {
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 10px;
+    }
+
+    .service-body {
+      font-size: 13px;
+      opacity: 0.8;
+    }
+
+    @media (max-width: 767px) {
+      .page {
+        padding: 0 20px 48px;
+      }
+
+      .site-header {
+        top: 20px;
+        left: 20px;
+        right: 20px;
+      }
+
+      .logo {
+        font-size: 11px;
+      }
+
+      .main-nav {
+        gap: 18px;
+        font-size: 11px;
+        flex-wrap: wrap;
+      }
+
+      .page-inner {
+        padding-top: 120px;
+      }
+
+      .page-title {
+        font-size: 22px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .nav-contact--desktop {
+        display: none;
+      }
+
+      .nav-contact--mobile {
+        display: inline-block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <div class="logo">
+          <span class="logo-line">Hidden</span>
+          <span class="logo-line">Wave</span>
+        </div>
+
+        <nav class="main-nav">
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="contact.html" class="nav-contact--desktop">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-inner">
+      <div class="page-kicker">Services</div>
+      <h1 class="page-title">Core capabilities</h1>
+
+      <section class="services-grid">
+        <div class="service-block">
+          <div class="service-label">01</div>
+          <div class="service-title">Brand & Distribution Strategy</div>
+          <div class="service-body">
+            <p>
+              Use this block for your B2B / wholesale / franchising / market entry work:
+              channels, partners, structures, and regional strategy.
+            </p>
+          </div>
+        </div>
+
+        <div class="service-block">
+          <div class="service-label">02</div>
+          <div class="service-title">Creative Production & Systems</div>
+          <div class="service-body">
+            <p>
+              Here you can talk about creative direction, image-making, content
+              and production for brands, campaigns or cultural projects.
+            </p>
+          </div>
+        </div>
+
+        <div class="service-block">
+          <div class="service-label">03</div>
+          <div class="service-title">Partnerships & Showroom</div>
+          <div class="service-body">
+            <p>
+              Use this section for showroom ecosystems, buyer relations, partnership design and
+              long-term collaboration structures.
+            </p>
+          </div>
+        </div>
+
+        <div class="service-block">
+          <div class="service-label">04</div>
+          <div class="service-title">Advisory & Special Projects</div>
+          <div class="service-body">
+            <p>
+              A space for one-off or ongoing advisory roles, cross-border projects,
+              or collaborations that do not sit in a single category.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <a href="contact.html" class="nav-contact--mobile">Contact</a>
+  </div>
+</body>
+</html>
