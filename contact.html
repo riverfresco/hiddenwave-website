@@ -8,6 +8,27 @@
     * {
       box-sizing: border-box;
     }
+/* --- Hidden Wave 自定义 Futura 字体 --- */
+@font-face {
+  font-family: "HW Futura Bold";
+  src: url("assets/fonts/FuturaLTPaneuropeanBold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "HW Futura Book";
+  src: url("assets/fonts/FuturaLTPaneuropeanBook.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "HW Futura Light";
+  src: url("assets/fonts/FuturaLTPaneuropeanLight.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
 
     html, body {
       margin: 0;
@@ -32,9 +53,10 @@
     .page {
       min-height: 100vh;
       position: relative;
-      padding: 0 24px 56px;
+      padding: 0 24px 48px;
     }
 
+    /* Header / Nav  —— 与首页保持一致风格 */
     .site-header {
       position: fixed;
       top: 24px;
@@ -58,9 +80,16 @@
     .logo {
       display: flex;
       flex-direction: column;
-      gap: 2px;
       font-size: 12px;
-      line-height: 1.1;
+      line-height: 1.2;   /* 和首页一样 */
+      gap: 3px;           /* 和首页一样 */
+    }
+    .logo a {
+      display: flex;
+      flex-direction: column;  
+      gap: 2px;              /* 新增 —— 和首页一致 */
+      font-size: 12px;       /* 新增 —— 和首页一致 */
+      line-height: 1.1;      /* 新增 —— 和首页一致 */
     }
 
     .logo-line {
@@ -103,53 +132,52 @@
       opacity: 1;
     }
 
+    /* 页面内容区域 */
     .page-inner {
-      max-width: 640px;
+      max-width: 960px;
       margin: 0 auto;
-      padding-top: 160px;
-      text-transform: none;
-      letter-spacing: 0.04em;
+      padding-top: 140px;
     }
 
     .page-kicker {
       font-size: 11px;
-      text-transform: uppercase;
       letter-spacing: 0.22em;
       opacity: 0.6;
       margin-bottom: 16px;
     }
 
     .page-title {
-      font-size: 30px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
+      font-family: "HW Futura Bold", "Futura", system-ui, -apple-system, BlinkMacSystemFont,
+      font-size: 32px;
+      letter-spacing: 0.14em;
       margin: 0 0 24px;
+      color: #dcdcdc;   /* 柔和灰白，与页面统一 */
     }
 
-    .contact-line {
-      font-size: 14px;
-      margin-bottom: 10px;
+    .page-subtitle {
+      font-family: "HW Futura Book", "Futura", system-ui, -apple-system, BlinkMacSystemFont,
+      font-size: 13px;
+      opacity: 0.7;
+      margin-bottom: 32px;
+      color: #dcdcdc;   /* 柔和灰白，与页面统一 */
+    }
+
+    .page-body {
+      font-family: "HW Futura Light", "Futura", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 16px;
+      line-height: 1.7;
       opacity: 0.9;
     }
 
-    .contact-email {
-      font-size: 16px;
-      margin: 20px 0 10px;
-      text-transform: lowercase;
-      letter-spacing: 0.08em;
-    }
-
-    .contact-locations {
-      font-size: 13px;
-      opacity: 0.8;
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      margin-top: 16px;
+    .page-body p {
+      margin: 0 0 18px;
     }
 
     @media (max-width: 767px) {
       .page {
-        padding: 0 20px 48px;
+        padding: 0 20px 40px;
       }
 
       .site-header {
@@ -162,22 +190,25 @@
         font-size: 11px;
       }
 
+       /* ★ 修复 About 页 mobile logo 字体偏大的问题（关键） */
+       .logo a {
+         font-size: 11px !important;
+         line-height: 1.1 !important;
+      }
+
       .main-nav {
-        gap: 18px;
+        gap: 20px;
         font-size: 11px;
         flex-wrap: wrap;
       }
 
       .page-inner {
-        padding-top: 130px;
+        padding-top: 120px;
       }
 
       .page-title {
         font-size: 24px;
-      }
-
-      .contact-email {
-        font-size: 15px;
+        line-height: 1.2;
       }
 
       .nav-contact--desktop {
@@ -192,11 +223,14 @@
 </head>
 <body>
   <div class="page">
+    <!-- Header -->
     <header class="site-header">
       <div class="site-header-inner">
         <div class="logo">
-          <span class="logo-line">Hidden</span>
-          <span class="logo-line">Wave</span>
+          <a href="index.html" class="logo-link">
+            <span class="logo-line">Hidden</span>
+            <span class="logo-line">Wave</span>
+            <a href="index.html" class="logo-link" aria-label="Hidden Wave homepage"></a>
         </div>
 
         <nav class="main-nav">
@@ -208,22 +242,23 @@
       </div>
     </header>
 
+    <!-- Content -->
     <main class="page-inner">
       <div class="page-kicker">Contact</div>
-      <h1 class="page-title">Work with Hidden Wave</h1>
+      <h1 class="page-title">For projects, collaborations or conversations:</h1>
 
-      <div class="contact-line">
-        For projects, collaborations or conversations:
-      </div>
-      <div class="contact-email">
+      <div class="page-subtitle">
         ben.li@hiddenwave.it
       </div>
 
-      <div class="contact-locations">
-        Milan · Shanghai
+      <div class="page-body">
+        <p>
+          ben.li@hiddenwave.it
+        </p>
       </div>
     </main>
 
+    <!-- Mobile bottom CONTACT -->
     <a href="contact.html" class="nav-contact--mobile">Contact</a>
   </div>
 </body>
