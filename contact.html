@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hidden Wave — About</title>
+  <title>Hidden Wave — Contact</title>
   <style>
     * {
       box-sizing: border-box;
@@ -32,10 +32,9 @@
     .page {
       min-height: 100vh;
       position: relative;
-      padding: 0 24px 48px;
+      padding: 0 24px 56px;
     }
 
-    /* Header / Nav  —— 与首页保持一致风格 */
     .site-header {
       position: fixed;
       top: 24px;
@@ -59,16 +58,9 @@
     .logo {
       display: flex;
       flex-direction: column;
+      gap: 2px;
       font-size: 12px;
-      line-height: 1.2;   /* 和首页一样 */
-      gap: 3px;           /* 和首页一样 */
-    }
-    .logo a {
-      display: flex;
-      flex-direction: column;  
-      gap: 2px;              /* 新增 —— 和首页一致 */
-      font-size: 12px;       /* 新增 —— 和首页一致 */
-      line-height: 1.1;      /* 新增 —— 和首页一致 */
+      line-height: 1.1;
     }
 
     .logo-line {
@@ -111,47 +103,53 @@
       opacity: 1;
     }
 
-    /* 页面内容区域 */
     .page-inner {
-      max-width: 960px;
+      max-width: 640px;
       margin: 0 auto;
-      padding-top: 140px;
+      padding-top: 160px;
+      text-transform: none;
+      letter-spacing: 0.04em;
     }
 
     .page-kicker {
       font-size: 11px;
+      text-transform: uppercase;
       letter-spacing: 0.22em;
       opacity: 0.6;
       margin-bottom: 16px;
     }
 
     .page-title {
-      font-size: 32px;
-      letter-spacing: 0.14em;
+      font-size: 30px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
       margin: 0 0 24px;
     }
 
-    .page-subtitle {
-      font-size: 13px;
-      opacity: 0.7;
-      margin-bottom: 32px;
-    }
-
-    .page-body {
-      text-transform: none;
-      letter-spacing: 0.04em;
+    .contact-line {
       font-size: 14px;
-      line-height: 1.7;
+      margin-bottom: 10px;
       opacity: 0.9;
     }
 
-    .page-body p {
-      margin: 0 0 18px;
+    .contact-email {
+      font-size: 16px;
+      margin: 20px 0 10px;
+      text-transform: lowercase;
+      letter-spacing: 0.08em;
+    }
+
+    .contact-locations {
+      font-size: 13px;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      margin-top: 16px;
     }
 
     @media (max-width: 767px) {
       .page {
-        padding: 0 20px 40px;
+        padding: 0 20px 48px;
       }
 
       .site-header {
@@ -164,25 +162,22 @@
         font-size: 11px;
       }
 
-       /* ★ 修复 About 页 mobile logo 字体偏大的问题（关键） */
-       .logo a {
-         font-size: 11px !important;
-         line-height: 1.1 !important;
-      }
-
       .main-nav {
-        gap: 20px;
+        gap: 18px;
         font-size: 11px;
         flex-wrap: wrap;
       }
 
       .page-inner {
-        padding-top: 120px;
+        padding-top: 130px;
       }
 
       .page-title {
         font-size: 24px;
-        line-height: 1.2;
+      }
+
+      .contact-email {
+        font-size: 15px;
       }
 
       .nav-contact--desktop {
@@ -197,14 +192,11 @@
 </head>
 <body>
   <div class="page">
-    <!-- Header -->
     <header class="site-header">
       <div class="site-header-inner">
         <div class="logo">
-          <a href="index.html" class="logo-link">
-            <span class="logo-line">Hidden</span>
-            <span class="logo-line">Wave</span>
-            <a href="index.html" class="logo-link" aria-label="Hidden Wave homepage"></a>
+          <span class="logo-line">Hidden</span>
+          <span class="logo-line">Wave</span>
         </div>
 
         <nav class="main-nav">
@@ -216,37 +208,22 @@
       </div>
     </header>
 
-    <!-- Content -->
     <main class="page-inner">
-      <div class="page-kicker">About</div>
-      <h1 class="page-title">Strategic Systems for Creative Growth</h1>
+      <div class="page-kicker">Contact</div>
+      <h1 class="page-title">Work with Hidden Wave</h1>
 
-      <div class="page-subtitle">
-        A think tank operating across creative, commercial and cultural systems.
+      <div class="contact-line">
+        For projects, collaborations or conversations:
+      </div>
+      <div class="contact-email">
+        ben.li@hiddenwave.it
       </div>
 
-      <div class="page-body">
-        <p>
-          Hidden Wave operates as a dynamic think tank that connects strategic clarity
-          with creative and commercial intelligence. We work across brands, markets
-          and cultural systems to design structures that are relevant, adaptive and
-          future-focused.
-        </p>
-        <p>
-          At the core is a collaborative network of specialists who contribute to
-          analysis, strategy and execution. By combining human insight with
-          AI-assisted methodologies, we create frameworks that help brands see
-          further, act faster and operate with precision.
-        </p>
-        <p>
-          Our role is not to decorate decisions, but to reveal truth, options and
-          opportunity — exits and entries — so partners can move forward with
-          confidence and direction.
-        </p>
+      <div class="contact-locations">
+        Milan · Shanghai
       </div>
     </main>
 
-    <!-- Mobile bottom CONTACT -->
     <a href="contact.html" class="nav-contact--mobile">Contact</a>
   </div>
 </body>
