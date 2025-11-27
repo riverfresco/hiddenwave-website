@@ -3,11 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hidden Wave — Portfolio</title>
+  <title>Hidden Wave — Portofolio</title>
   <style>
     * {
       box-sizing: border-box;
     }
+/* --- Hidden Wave 自定义 Futura 字体 --- */
+@font-face {
+  font-family: "HW Futura Bold";
+  src: url("assets/fonts/FuturaLTPaneuropeanBold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "HW Futura Book";
+  src: url("assets/fonts/FuturaLTPaneuropeanBook.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "HW Futura Light";
+  src: url("assets/fonts/FuturaLTPaneuropeanLight.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
 
     html, body {
       margin: 0;
@@ -32,9 +53,10 @@
     .page {
       min-height: 100vh;
       position: relative;
-      padding: 0 24px 56px;
+      padding: 0 24px 48px;
     }
 
+    /* Header / Nav  —— 与首页保持一致风格 */
     .site-header {
       position: fixed;
       top: 24px;
@@ -58,9 +80,16 @@
     .logo {
       display: flex;
       flex-direction: column;
-      gap: 2px;
       font-size: 12px;
-      line-height: 1.1;
+      line-height: 1.2;   /* 和首页一样 */
+      gap: 3px;           /* 和首页一样 */
+    }
+    .logo a {
+      display: flex;
+      flex-direction: column;  
+      gap: 2px;              /* 新增 —— 和首页一致 */
+      font-size: 12px;       /* 新增 —— 和首页一致 */
+      line-height: 1.1;      /* 新增 —— 和首页一致 */
     }
 
     .logo-line {
@@ -103,8 +132,9 @@
       opacity: 1;
     }
 
+    /* 页面内容区域 */
     .page-inner {
-      max-width: 1040px;
+      max-width: 960px;
       margin: 0 auto;
       padding-top: 140px;
     }
@@ -117,44 +147,37 @@
     }
 
     .page-title {
-      font-size: 30px;
+      font-family: "HW Futura Bold", "Futura", system-ui, -apple-system, BlinkMacSystemFont,
+      font-size: 32px;
       letter-spacing: 0.14em;
-      margin: 0 0 28px;
+      margin: 0 0 24px;
+      color: #dcdcdc;   /* 柔和灰白，与页面统一 */
     }
 
     .page-subtitle {
+      font-family: "HW Futura Book", "Futura", system-ui, -apple-system, BlinkMacSystemFont,
       font-size: 13px;
       opacity: 0.7;
-      text-transform: none;
-      letter-spacing: 0.04em;
       margin-bottom: 32px;
+      color: #dcdcdc;   /* 柔和灰白，与页面统一 */
     }
 
-    .brand-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 24px;
-      font-size: 13px;
+    .page-body {
+      font-family: "HW Futura Light", "Futura", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
-      opacity: 0.85;
-    }
-
-    .brand-item {
-      white-space: nowrap;
-    }
-
-    .note {
-      margin-top: 32px;
-      font-size: 11px;
-      text-transform: none;
       letter-spacing: 0.04em;
-      opacity: 0.6;
+      font-size: 16px;
+      line-height: 1.7;
+      opacity: 0.9;
+    }
+
+    .page-body p {
+      margin: 0 0 18px;
     }
 
     @media (max-width: 767px) {
       .page {
-        padding: 0 20px 48px;
+        padding: 0 20px 40px;
       }
 
       .site-header {
@@ -167,8 +190,14 @@
         font-size: 11px;
       }
 
+       /* ★ 修复 About 页 mobile logo 字体偏大的问题（关键） */
+       .logo a {
+         font-size: 11px !important;
+         line-height: 1.1 !important;
+      }
+
       .main-nav {
-        gap: 18px;
+        gap: 20px;
         font-size: 11px;
         flex-wrap: wrap;
       }
@@ -179,12 +208,7 @@
 
       .page-title {
         font-size: 24px;
-      }
-
-      .brand-list {
-        gap: 8px 18px;
-        font-size: 11px;
-        letter-spacing: 0.16em;
+        line-height: 1.2;
       }
 
       .nav-contact--desktop {
@@ -199,11 +223,14 @@
 </head>
 <body>
   <div class="page">
+    <!-- Header -->
     <header class="site-header">
       <div class="site-header-inner">
         <div class="logo">
-          <span class="logo-line">Hidden</span>
-          <span class="logo-line">Wave</span>
+          <a href="index.html" class="logo-link">
+            <span class="logo-line">Hidden</span>
+            <span class="logo-line">Wave</span>
+            <a href="index.html" class="logo-link" aria-label="Hidden Wave homepage"></a>
         </div>
 
         <nav class="main-nav">
@@ -215,31 +242,101 @@
       </div>
     </header>
 
-    <main class="page-inner">
-      <div class="page-kicker">Portfolio</div>
-      <h1 class="page-title">Selected collaborations</h1>
-      <div class="page-subtitle">
-        Replace this list with the brands, projects and collaborations you want to highlight first.
+    <!-- Content -->
+<main class="page-inner">
+  <!-- Kicker -->
+  <div class="page-kicker">Portfolio</div>
+
+  <!-- Title（你要的大标题） -->
+  <h1 class="page-title">
+    A selection of partners, collaborators and institutions across fashion, art, retail and culture.
+  </h1>
+
+  <!-- 名单区域 -->
+  <div class="page-body">
+    <div class="portfolio-list">
+
+      <!-- A -->
+      <div class="portfolio-group">
+        <h3 class="portfolio-letter">A</h3>
+        <ul>
+          <li>AMBER W SMITH</li>
+          <li>ARTISANAL ONE</li>
+        </ul>
       </div>
 
-      <div class="brand-list">
-        <span class="brand-item">AMBER W SMITH</span>
-        <span class="brand-item">MSGM</span>
-        <span class="brand-item">TRUSSARDI</span>
-        <span class="brand-item">INNERSECT</span>
-        <span class="brand-item">SERAPIS</span>
-        <span class="brand-item">VITELLI</span>
-        <span class="brand-item">GRIFONI</span>
-        <span class="brand-item">PROTOTIPO</span>
-        <span class="brand-item">ROLD SKOV</span>
-        <span class="brand-item">+ NDA CLIENTS</span>
+      <!-- G -->
+      <div class="portfolio-group">
+        <h3 class="portfolio-letter">G</h3>
+        <ul>
+          <li>GRIFONI</li>
+        </ul>
       </div>
 
-      <div class="note">
-        You can later expand this page with images, case studies or a timeline of collaborations.
+      <!-- I -->
+      <div class="portfolio-group">
+        <h3 class="portfolio-letter">I</h3>
+        <ul>
+          <li>INNERSECT</li>
+        </ul>
       </div>
-    </main>
 
+      <!-- M -->
+      <div class="portfolio-group">
+        <h3 class="portfolio-letter">M</h3>
+        <ul>
+          <li>MIRIAL</li>
+          <li>MSGM</li>
+        </ul>
+      </div>
+
+      <!-- P -->
+      <div class="portfolio-group">
+        <h3 class="portfolio-letter">P</h3>
+        <ul>
+          <li>PER GOTESSON</li>
+          <li>PROTOTIPO by Lampoon Magazine</li>
+        </ul>
+      </div>
+
+      <!-- R -->
+      <div class="portfolio-group">
+        <h3 class="portfolio-letter">R</h3>
+        <ul>
+          <li>ROLD SKOV</li>
+          <li>ROBERT WUN × UOOYAA</li>
+        </ul>
+      </div>
+
+      <!-- S -->
+      <div class="portfolio-group">
+        <h3 class="portfolio-letter">S</h3>
+        <ul>
+          <li>SERAPIS</li>
+        </ul>
+      </div>
+
+      <!-- T -->
+      <div class="portfolio-group">
+        <h3 class="portfolio-letter">T</h3>
+        <ul>
+          <li>TRUSSARDI</li>
+        </ul>
+      </div>
+
+      <!-- V -->
+      <div class="portfolio-group">
+        <h3 class="portfolio-letter">V</h3>
+        <ul>
+          <li>VITELLI</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+    <!-- Mobile bottom CONTACT -->
     <a href="contact.html" class="nav-contact--mobile">Contact</a>
   </div>
 </body>
