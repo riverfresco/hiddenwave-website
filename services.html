@@ -8,6 +8,27 @@
     * {
       box-sizing: border-box;
     }
+/* --- Hidden Wave 自定义 Futura 字体 --- */
+@font-face {
+  font-family: "HW Futura Bold";
+  src: url("assets/fonts/FuturaLTPaneuropeanBold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "HW Futura Book";
+  src: url("assets/fonts/FuturaLTPaneuropeanBook.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "HW Futura Light";
+  src: url("assets/fonts/FuturaLTPaneuropeanLight.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
 
     html, body {
       margin: 0;
@@ -32,9 +53,10 @@
     .page {
       min-height: 100vh;
       position: relative;
-      padding: 0 24px 56px;
+      padding: 0 24px 48px;
     }
 
+    /* Header / Nav  —— 与首页保持一致风格 */
     .site-header {
       position: fixed;
       top: 24px;
@@ -58,9 +80,16 @@
     .logo {
       display: flex;
       flex-direction: column;
-      gap: 2px;
       font-size: 12px;
-      line-height: 1.1;
+      line-height: 1.2;   /* 和首页一样 */
+      gap: 3px;           /* 和首页一样 */
+    }
+    .logo a {
+      display: flex;
+      flex-direction: column;  
+      gap: 2px;              /* 新增 —— 和首页一致 */
+      font-size: 12px;       /* 新增 —— 和首页一致 */
+      line-height: 1.1;      /* 新增 —— 和首页一致 */
     }
 
     .logo-line {
@@ -103,8 +132,9 @@
       opacity: 1;
     }
 
+    /* 页面内容区域 */
     .page-inner {
-      max-width: 1040px;
+      max-width: 960px;
       margin: 0 auto;
       padding-top: 140px;
     }
@@ -117,48 +147,37 @@
     }
 
     .page-title {
-      font-size: 30px;
+      font-family: "HW Futura Bold", "Futura", system-ui, -apple-system, BlinkMacSystemFont,
+      font-size: 32px;
       letter-spacing: 0.14em;
-      margin: 0 0 32px;
+      margin: 0 0 24px;
+      color: #dcdcdc;   /* 柔和灰白，与页面统一 */
     }
 
-    .services-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 1.1fr;
-      gap: 40px 72px;
-      text-transform: none;
+    .page-subtitle {
+      font-family: "HW Futura Book", "Futura", system-ui, -apple-system, BlinkMacSystemFont,
+      font-size: 13px;
+      opacity: 0.7;
+      margin-bottom: 32px;
+      color: #dcdcdc;   /* 柔和灰白，与页面统一 */
+    }
+
+    .page-body {
+      font-family: "HW Futura Light", "Futura", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      text-transform: uppercase;
       letter-spacing: 0.04em;
-      font-size: 14px;
+      font-size: 16px;
       line-height: 1.7;
-    }
-
-    .service-block {
       opacity: 0.9;
     }
 
-    .service-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      opacity: 0.6;
-      margin-bottom: 8px;
-    }
-
-    .service-title {
-      font-size: 15px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      margin-bottom: 10px;
-    }
-
-    .service-body {
-      font-size: 13px;
-      opacity: 0.8;
+    .page-body p {
+      margin: 0 0 18px;
     }
 
     @media (max-width: 767px) {
       .page {
-        padding: 0 20px 48px;
+        padding: 0 20px 40px;
       }
 
       .site-header {
@@ -171,8 +190,14 @@
         font-size: 11px;
       }
 
+       /* ★ 修复 About 页 mobile logo 字体偏大的问题（关键） */
+       .logo a {
+         font-size: 11px !important;
+         line-height: 1.1 !important;
+      }
+
       .main-nav {
-        gap: 18px;
+        gap: 20px;
         font-size: 11px;
         flex-wrap: wrap;
       }
@@ -182,12 +207,8 @@
       }
 
       .page-title {
-        font-size: 22px;
-      }
-
-      .services-grid {
-        grid-template-columns: 1fr;
-        gap: 28px;
+        font-size: 24px;
+        line-height: 1.2;
       }
 
       .nav-contact--desktop {
@@ -202,11 +223,14 @@
 </head>
 <body>
   <div class="page">
+    <!-- Header -->
     <header class="site-header">
       <div class="site-header-inner">
         <div class="logo">
-          <span class="logo-line">Hidden</span>
-          <span class="logo-line">Wave</span>
+          <a href="index.html" class="logo-link">
+            <span class="logo-line">Hidden</span>
+            <span class="logo-line">Wave</span>
+            <a href="index.html" class="logo-link" aria-label="Hidden Wave homepage"></a>
         </div>
 
         <nav class="main-nav">
@@ -218,57 +242,114 @@
       </div>
     </header>
 
+    <!-- Content -->
     <main class="page-inner">
       <div class="page-kicker">Services</div>
-      <h1 class="page-title">Core capabilities</h1>
+      <h1 class="page-title">Services for Strategic Growth</h1>
 
-      <section class="services-grid">
-        <div class="service-block">
-          <div class="service-label">01</div>
-          <div class="service-title">Brand & Distribution Strategy</div>
-          <div class="service-body">
-            <p>
-              Use this block for your B2B / wholesale / franchising / market entry work:
-              channels, partners, structures, and regional strategy.
-            </p>
-          </div>
+     <!-- Subtitle -->
+  <div class="page-subtitle">
+    Connecting brand, image and distribution through systems-based work across creative, commercial and cultural fields.
+  </div>
+
+  <!-- Main body -->
+  <div class="page-body">
+    <!-- Section 1: Overview -->
+    <section class="page-section">
+      <h2 class="section-title">What we do</h2>
+      <p>
+        Hidden Wave supports brands, studios and founders who sit between fashion, art and culture. We design
+        strategic systems that connect narrative, product and market — so every campaign, collaboration and
+        distribution decision reinforces a clear point of view.
+      </p>
+      <p>
+        The focus is not on producing more activity, but on building frameworks that make each move precise,
+        legible and sustainable over time.
+      </p>
+    </section>
+
+    <!-- Section 2: Core service pillars -->
+    <section class="page-section">
+      <h2 class="section-title">Service pillars</h2>
+      <div class="section-grid">
+        <div class="section-block">
+          <h3 class="section-label">01 — Brand & Narrative Systems</h3>
+          <p>
+            Clarifying positioning, language and visual direction. We map how a brand speaks across campaign,
+            lookbook, showroom, retail and digital — and define structures that keep future work coherent while
+            leaving space for experimentation.
+          </p>
         </div>
 
-        <div class="service-block">
-          <div class="service-label">02</div>
-          <div class="service-title">Creative Production & Systems</div>
-          <div class="service-body">
-            <p>
-              Here you can talk about creative direction, image-making, content
-              and production for brands, campaigns or cultural projects.
-            </p>
-          </div>
+        <div class="section-block">
+          <h3 class="section-label">02 — Commercial & Distribution Strategy</h3>
+          <p>
+            Designing wholesale architectures, regional roll-outs and partner mixes. From showroom strategy and
+            key account planning to alignment between price, product and margin, we work to build resilient
+            commercial structures instead of short-term spikes.
+          </p>
         </div>
 
-        <div class="service-block">
-          <div class="service-label">03</div>
-          <div class="service-title">Partnerships & Showroom</div>
-          <div class="service-body">
-            <p>
-              Use this section for showroom ecosystems, buyer relations, partnership design and
-              long-term collaboration structures.
-            </p>
-          </div>
+        <div class="section-block">
+          <h3 class="section-label">03 — Partnerships & Cultural Programs</h3>
+          <p>
+            Structuring collaborations between brands, galleries, retailers and institutions. We identify
+            partners, define roles and design formats — capsules, residencies, publishing, exhibitions — backed
+            by clear objectives and commercial logic.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: How we work -->
+    <section class="page-section">
+      <h2 class="section-title">How we work</h2>
+      <ul class="bullet-list">
+        <li>Start with an audit of positioning, language, existing partners and market feedback.</li>
+        <li>Translate strategy into working tools: roadmaps, calendars, offer structures and partner maps.</li>
+        <li>Build light, modular teams around each project rather than fixed, heavy infrastructures.</li>
+        <li>Stay close to the market through ongoing conversations with buyers, distributors and audiences.</li>
+      </ul>
+      <p>
+        Our role is to sit between creative direction, commercial operations and cultural strategy — keeping
+        all three aligned while internal teams focus on making, selling and running the day-to-day.
+      </p>
+    </section>
+
+    <!-- Section 4: Engagement formats -->
+    <section class="page-section">
+      <h2 class="section-title">Ways of working together</h2>
+      <div class="section-grid">
+        <div class="section-block">
+          <h3 class="section-label">Advisory Retainer</h3>
+          <p>
+            Ongoing strategic counsel for founders and leadership teams. Regular check-ins, document review and
+            decision support around launches, partnerships and structural shifts.
+          </p>
         </div>
 
-        <div class="service-block">
-          <div class="service-label">04</div>
-          <div class="service-title">Advisory & Special Projects</div>
-          <div class="service-body">
-            <p>
-              A space for one-off or ongoing advisory roles, cross-border projects,
-              or collaborations that do not sit in a single category.
-            </p>
-          </div>
+        <div class="section-block">
+          <h3 class="section-label">Project-Based Studio</h3>
+          <p>
+            Focused engagements around a defined question — a new market entry, a restructuring of distribution,
+            or a campaign and partnership cycle for a specific season or collection.
+          </p>
         </div>
-      </section>
-    </main>
 
+        <div class="section-block">
+          <h3 class="section-label">Workshops & Sprints</h3>
+          <p>
+            Compact formats designed to align internal teams, surface opportunities and set priorities. Ideal for
+            testing a new direction before committing to a long-term program.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+
+    <!-- Mobile bottom CONTACT -->
     <a href="contact.html" class="nav-contact--mobile">Contact</a>
   </div>
 </body>
