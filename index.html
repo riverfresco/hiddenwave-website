@@ -285,26 +285,16 @@
       imgs[currentIndex].classList.add("active");
     }
 
-// Desktop & Mobile use different intervals
-const DESKTOP_INTERVAL = 9000; // 电脑：保持原来的节奏
-const MOBILE_INTERVAL  = 6000; // 手机：更快一些
+    // 7s fully visible + 1.8s fade ≈ 9s cycle time
+    const HERO_INTERVAL = 9000;
+    setInterval(cycleHero, HERO_INTERVAL);
 
-function getHeroInterval() {
-  return window.innerWidth <= 767 ? MOBILE_INTERVAL : DESKTOP_INTERVAL;
-}
-
-let heroTimer = setInterval(cycleHero, getHeroInterval());
-
-window.addEventListener("resize", () => {
-  const newSet = getCurrentSet();
-  if (newSet !== currentSet) {
-    resetActiveImages();
-  }
-
-  clearInterval(heroTimer);
-  heroTimer = setInterval(cycleHero, getHeroInterval());
-});
-
+    // Handle orientation / resize changes
+    window.addEventListener("resize", () => {
+      const newSet = getCurrentSet();
+      if (newSet !== currentSet) {
+        resetActiveImages();
+      }
     });
   </script>
 </body>
