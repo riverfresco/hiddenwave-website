@@ -290,21 +290,17 @@ const DESKTOP_INTERVAL = 9000; // 电脑：保持原来的节奏
 const MOBILE_INTERVAL  = 6000; // 手机：更快一些
 
 function getHeroInterval() {
-  // 和 hero 图片的 mobile 判断保持一致：767px 及以下视为 mobile
   return window.innerWidth <= 767 ? MOBILE_INTERVAL : DESKTOP_INTERVAL;
 }
 
-// 根据当前设备设置定时器
 let heroTimer = setInterval(cycleHero, getHeroInterval());
 
-// Handle orientation / resize changes
 window.addEventListener("resize", () => {
   const newSet = getCurrentSet();
   if (newSet !== currentSet) {
     resetActiveImages();
   }
 
-  // 屏幕尺寸变化时，重新按当前设备类型设置节奏
   clearInterval(heroTimer);
   heroTimer = setInterval(cycleHero, getHeroInterval());
 });
